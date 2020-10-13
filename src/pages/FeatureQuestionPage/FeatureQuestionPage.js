@@ -68,7 +68,7 @@ const FeatureQuestionPage = ({
                 <h3 class="text-center font-weight-light my-4"><b>Featured Questions</b></h3>
             </div>
             <div class="card-body">
-                {(!FeatureQuestionPending && !FeatureQuestionError) ? (
+                {(!FeatureQuestionPending && !FeatureQuestionError && FeatureQuestionData) ? (
                     < List
                         itemLayout="vertical"
                         size="large"
@@ -78,7 +78,7 @@ const FeatureQuestionPage = ({
                             },
                             pageSize: 20,
                         }}
-                        dataSource={FeatureQuestionData && FeatureQuestionData.items}
+                        dataSource={FeatureQuestionData.items || []}
                         renderItem={item => (
                             <List.Item
                                 key={item.title}
