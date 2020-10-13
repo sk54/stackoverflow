@@ -1,6 +1,5 @@
 import React from 'react'
-import { List, Avatar, Space } from 'antd';
-import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons';
+import { List } from 'antd';
 import { Container, Row, Col } from 'react-bootstrap'
 
 import { timeSince } from "../../commonFunction";
@@ -79,7 +78,7 @@ const FeatureQuestionPage = ({
                             },
                             pageSize: 20,
                         }}
-                        dataSource={FeatureQuestionData && FeatureQuestionData.items || []}
+                        dataSource={FeatureQuestionData && FeatureQuestionData.items}
                         renderItem={item => (
                             <List.Item
                                 key={item.title}

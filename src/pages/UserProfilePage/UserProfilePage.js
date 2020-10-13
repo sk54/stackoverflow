@@ -2,10 +2,9 @@ import React from 'react'
 
 const UserProfilePage = (props) => {
     const {
-        id,
-        name,
+
         userDetailData,
-        userDetailPending
+
     } = props;
 
     const renderUserView = (data) => {
