@@ -63,49 +63,13 @@ const FeatureQuestionPage = ({
         )
     }
 
-    const listData = [];
-    for (let i = 0; i < 23; i++) {
-        listData.push({
-            "tags": [
-                "java",
-                "arrays"
-            ],
-            "owner": {
-                "reputation": 1,
-                "user_id": 14281412,
-                "user_type": "registered",
-                "profile_image": "https://lh3.googleusercontent.com/-U1VELHHNDRQ/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnFCwevEzRtRuorSsfd5Z5kP3ujTA/photo.jpg?sz=128",
-                "display_name": "吴至琛",
-                "link": "https://stackoverflow.com/users/14281412/%e5%90%b4%e8%87%b3%e7%90%9b"
-            },
-            "is_answered": false,
-            "view_count": 14,
-            "answer_count": 0,
-            "score": 0,
-            "last_activity_date": 1602501246,
-            "creation_date": 1602500999,
-            "last_edit_date": 1602501246,
-            "question_id": 64316686,
-            "content_license": "CC BY-SA 4.0",
-            "link": "https://stackoverflow.com/questions/64316686/questions-about-copyeven-in-java",
-            "title": "Questions about copyEven in java"
-        });
-    }
-
-    const IconText = ({ icon, text }) => (
-        <Space>
-            {React.createElement(icon)}
-            {text}
-        </Space>
-    );
-
     return (
         <div class="card shadow-lg border-0 rounded-lg m-1">
             <div class="card-header">
                 <h3 class="text-center font-weight-light my-4"><b>Featured Questions</b></h3>
             </div>
             <div class="card-body">
-                {!FeatureQuestionPending && !FeatureQuestionError && (
+                {(!FeatureQuestionPending && !FeatureQuestionError) ? (
                     < List
                         itemLayout="vertical"
                         size="large"
@@ -123,7 +87,7 @@ const FeatureQuestionPage = ({
                                 {renderRow(item)}
                             </List.Item>
                         )}
-                    />)
+                    />) : "Loading"
                 }
             </div>
         </div>
