@@ -1,25 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import CreateStore from "./store/store";
+import {
+  Login,
+  FeatureQuestionPage,
+  UserProfilePage,
+  NotFoundPage
+} from "./pages";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'antd/dist/antd.css';
 import './App.css';
 
-function App() {
+function App(props) {
+  const store = CreateStore();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <Login {...props} />
+          </Route>
+          <Route path="/feature-questions">
+            <FeatureQuestionPage {...props} />
+          </Route>
+          <Route path="/users/:id/:name">
+            <UserProfilePage {...props} />
+          </Route>
+          <Route path="*">
+            <NotFoundPage />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </Provider>
+
   );
 }
 
